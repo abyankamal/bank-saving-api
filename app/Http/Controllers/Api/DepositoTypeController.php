@@ -13,25 +13,25 @@ class DepositoTypeController extends Controller
         return DepositoType::all();
     }
 
-    public function store(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'yearly_return' => 'required|decimal',
-        ]);
+    // public function store(Request $request)
+    // {
+    //     $request->validate([
+    //         'name' => 'required|string|max:255',
+    //         'yearly_return' => 'required|decimal',
+    //     ]);
 
-        $depositoType = DepositoType::create($request->all());
-        return response()->json($depositoType, 201);
-    }
+    //     $depositoType = DepositoType::create($request->all());
+    //     return response()->json($depositoType, 201);
+    // }
 
     public function show($id)
     {
         return DepositoType::find($id);
     }
 
-    public function destroy($id)
-    {
-        DepositoType::destroy($id);
-        return response()->json(null, 204);
-    }
+    // public function destroy($id)
+    // {
+    //     DepositoType::destroy($id);
+    //     return response()->json(null, 204);
+    // }
 }

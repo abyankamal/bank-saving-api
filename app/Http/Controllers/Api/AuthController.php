@@ -50,7 +50,7 @@ class AuthController extends Controller
 
         if (!$user || !Hash::check($data['password'], $user->password)) {
             throw ValidationException::withMessages([
-                'email' => ['Email Dan Password Tidak Sesuai Data.'],
+                'email' => ['Email Dan Password Not Valid'],
             ]);
         }
 

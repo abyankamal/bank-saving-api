@@ -17,8 +17,12 @@ class AccountController extends Controller
         $userid = $request->user()->id;
 
         $accounts = Account::where('user_id', $userid)
-            ->with('depositoType') // Ensure this matches the relationship method in the Account model
+            ->with('depositoType')
             ->get();
+
+        if ($accounts->isEmpty()) {
+            return response()->json(['message' => 'This Account Not Have Transaction'], 200);
+        }
 
         return response()->json([
             'accounts' => $accounts->map(function ($account) {
@@ -113,7 +117,7 @@ class AccountController extends Controller
         $transactions = Transaction::where('account_id', $account->id)->with('account')->get();
 
         if ($transactions->isEmpty()) {
-            return response()->json(['message' => 'Akun ini belum pernah melakukan transaksi'], 200);
+            return response()->json(['message' => 'This Account Not Have Transaction'], 200);
         }
 
         return response()->json($transactions, 200);

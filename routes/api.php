@@ -18,7 +18,4 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('accounts/{account}/deposit', [AccountController::class, 'deposit']);
     Route::post('accounts/{account}/withdraw', [AccountController::class, 'withdraw']);
     Route::get('accounts/transactions/{account}', [AccountController::class, 'transaction']);
-    Route::get('customer/deposits', [AccountController::class, 'customerDeposits']);
-    Route::get('customer/accounts', [AccountController::class, 'customerAccounts']);
-    Route::get('accounts/{account}/transactions', [TransactionController::class, 'index']);
 });
